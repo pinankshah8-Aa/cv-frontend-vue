@@ -182,10 +182,13 @@ BooleanMinimize.prototype.solve = function () {
           let append = true;
 
           for (let j = tempSets.length - 1; j >= 0; --j) {
+            if (isSubset(tempSets[j], x)) {
+              append = false;
+              break;
+            }
+
             if (isSubset(x, tempSets[j])) {
               tempSets.splice(j, 1);
-            } else {
-              append = false;
             }
           }
 
